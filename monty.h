@@ -1,5 +1,7 @@
 #ifndef MONTY_H
 #define MONTY_H
+
+#define _GNU_SOURCE
 #include <stdio.h>
 #include <unistd.h>
 #include <string.h>
@@ -40,11 +42,10 @@ typedef struct instruction_s
 extern stack_t *head;
 typedef void (*op_func)(stack_t **, unsigned int);
 
-/* file operations*/
+/*file operations*/
 void open_file(char *file_name);
 int parse_line(char *buffer, int line_number, int format);
-void read_file(FILE *file);
-int len_chars(FILE *file);
+void read_file(FILE *);
 void find_func(char *, char *, int, int);
 
 /*Stack operations*/
@@ -73,11 +74,10 @@ void display_char(stack_t **, unsigned int);
 void display_str(stack_t **, unsigned int);
 void rotl(stack_t **, unsigned int);
 
-/*Error handling*/
+/*Error hanlding*/
 void err_handle(int error_code, ...);
 void more_err(int error_code, ...);
 void string_err(int error_code, ...);
 void rotr(stack_t **, unsigned int);
-
 
 #endif

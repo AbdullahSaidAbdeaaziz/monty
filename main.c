@@ -1,17 +1,14 @@
 #include "monty.h"
-
-
+stack_t *head = NULL;
 /**
- * main - entry point of program
+ * main - entry point
  * @argc: arguments count
  * @argv: list of arguments
- * Return: 0 on success
+ * Return: always 0
  */
 
 int main(int argc, char *argv[])
 {
-	head = NULL;
-
 	if (argc != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
@@ -42,7 +39,6 @@ stack_t *create_node(int n)
 
 /**
  * free_nodes - Frees nodes in the stack.
- * Return: None
  */
 void free_nodes(void)
 {
@@ -60,4 +56,27 @@ void free_nodes(void)
 }
 
 
+/**
+ * enqueue - Adds a node to the queue.
+ * @new_node: Pointer to the new node.
+ * @ln: line number of the opcode.
+ */
+void enqueue(stack_t **new_node, __attribute__((unused))unsigned int ln)
+{
+	stack_t *tmp;
 
+	if (new_node == NULL || *new_node == NULL)
+		exit(EXIT_FAILURE);
+	if (head == NULL)
+	{
+		head = *new_node;
+		return;
+	}
+	tmp = head;
+	while (tmp->next != NULL)
+		tmp = tmp->next;
+
+	tmp->next = *new_node;
+	(*new_node)->prev = tmp;
+
+}
