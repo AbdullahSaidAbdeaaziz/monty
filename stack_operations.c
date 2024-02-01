@@ -1,11 +1,11 @@
 #include "monty.h"
 
 /**
- * add - Adds the top two elements of the stack.
+ * _add - Adds the top two elements of the stack.
  * @stack: Pointer to a pointer pointing to top node of the stack.
  * @line_number: Interger representing the line number of of the opcode.
  */
-void add(stack_t **stack, unsigned int line_number)
+void _add(stack_t **stack, unsigned int line_number)
 {
 	int sum;
 
@@ -20,11 +20,11 @@ void add(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * mul - mulitplys the top two elements of the stack.
+ * _mul - mulitplys the top two elements of the stack.
  * @stack: Pointer to a pointer pointing to top node of the stack.
  * @line_number: Interger representing the line number of of the opcode.
  */
-void mul(stack_t **stack, unsigned int line_number)
+void _mul(stack_t **stack, unsigned int line_number)
 {
 	int sum;
 
@@ -40,11 +40,11 @@ void mul(stack_t **stack, unsigned int line_number)
 
 
 /**
- * mod - modulars the top two elements of the stack.
+ * _mod - modulars the top two elements of the stack.
  * @stack: Pointer to a pointer pointing to top node of the stack.
  * @line_number: Interger representing the line number of of the opcode.
  */
-void mod(stack_t **stack, unsigned int line_number)
+void _mod(stack_t **stack, unsigned int line_number)
 {
 	int sum;
 
@@ -63,11 +63,11 @@ void mod(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * sub - substracts the top two elements of the stack.
+ * _sub - substracts the top two elements of the stack.
  * @stack: Pointer to a pointer pointing to top node of the stack.
  * @line_number: Interger representing the line number of of the opcode.
  */
-void sub(stack_t **stack, unsigned int line_number)
+void _sub(stack_t **stack, unsigned int line_number)
 {
 	int sum;
 
@@ -85,11 +85,11 @@ void sub(stack_t **stack, unsigned int line_number)
 
 
 /**
- * div - divides the top two elements of the stack.
+ * _div - divides the top two elements of the stack.
  * @stack: Pointer to a pointer pointing to top node of the stack.
  * @line_number: Interger representing the line number of of the opcode.
  */
-void div(stack_t **stack, unsigned int line_number)
+void _div(stack_t **stack, unsigned int line_number)
 {
 	int sum;
 

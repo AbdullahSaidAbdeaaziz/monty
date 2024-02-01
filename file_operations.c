@@ -11,7 +11,7 @@ void open_file(char *file_name)
 	FILE *fd = fopen(file_name, "r");
 
 	if (file_name == NULL || fd == NULL)
-		err(2, file_name);
+		err_handle(2, file_name);
 
 	read_file(fd);
 	fclose(fd);
@@ -54,7 +54,7 @@ int parse_line(char *buffer, int line_number, int format)
 	const char *delim = "\n ";
 
 	if (buffer == NULL)
-		err(4);
+		err_handle(4);
 
 	opcode = strtok(buffer, delim);
 	if (opcode == NULL)
@@ -91,13 +91,13 @@ void find_func(char *opcode, char *value, int ln, int format)
 		{"pop", pop},
 		{"nop", nop},
 		{"swap", swap},
-		{"sub", sub},
-		{"add", add},
-		{"div", div},
-		{"mul", mul},
-		{"mod", mod},
-		{"pchar", print_char},
-		{"pstr", print_str},
+		{"sub", _sub},
+		{"add", _add},
+		{"div", _div},
+		{"mul", _mul},
+		{"mod", _mod},
+		{"pchar", display_char},
+		{"pstr", display_str},
 		{"rotl", rotl},
 		{"rotr", rotr},
 		{NULL, NULL}
@@ -110,17 +110,17 @@ void find_func(char *opcode, char *value, int ln, int format)
 	{
 		if (strcmp(opcode, func_list[i].opcode) == 0)
 		{
-			call_fun(func_list[i].f, opcode, value, ln, format);
+			call_func(func_list[i].f, opcode, value, ln, format);
 			flag = 0;
 		}
 	}
 	if (flag == 1)
-		err(3, ln, opcode);
+		err_handle(3, ln, opcode);
 }
 
 
 /**
- * call_fun - Calls the required function.
+ * call_func - Calls the required function.
  * @func: Pointer to the function that is about to be called.
  * @op: string representing the opcode.
  * @val: string representing a numeric value.
@@ -128,7 +128,7 @@ void find_func(char *opcode, char *value, int ln, int format)
  * @format: Format specifier. If 0 Nodes will be entered as a stack.
  * if 1 nodes will be entered as a queue.
  */
-void call_fun(op_func func, char *op, char *val, int ln, int format)
+void call_func(op_func func, char *op, char *val, int ln, int format)
 {
 	stack_t *node;
 	int flag;
@@ -143,11 +143,11 @@ void call_fun(op_func func, char *op, char *val, int ln, int format)
 			flag = -1;
 		}
 		if (val == NULL)
-			err(5, ln);
+			err_handle(5, ln);
 		for (i = 0; val[i] != '\0'; i++)
 		{
 			if (isdigit(val[i]) == 0)
-				err(5, ln);
+				err_handle(5, ln);
 		}
 		node = create_node(atoi(val) * flag);
 		if (format == 0)

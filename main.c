@@ -10,6 +10,8 @@
 
 int main(int argc, char *argv[])
 {
+	head = NULL;
+
 	if (argc != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
