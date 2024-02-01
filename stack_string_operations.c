@@ -32,7 +32,7 @@ void display_str(stack_t **stack, __attribute__((unused))unsigned int ln)
 
 	if (stack == NULL || *stack == NULL)
 	{
-		displayf("\n");
+		printf("\n");
 		return;
 	}
 
@@ -42,10 +42,10 @@ void display_str(stack_t **stack, __attribute__((unused))unsigned int ln)
 		ascii = tmp->n;
 		if (ascii <= 0 || ascii > 127)
 			break;
-		displayf("%c", ascii);
+		printf("%c", ascii);
 		tmp = tmp->next;
 	}
-	displayf("\n");
+	printf("\n");
 }
 
 /**
