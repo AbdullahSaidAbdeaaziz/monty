@@ -10,4 +10,4 @@
 ```
 
 ### Note
-> <file> like in `test/`.
+> file like in `test/`.
